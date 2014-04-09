@@ -58,6 +58,17 @@ module.exports = function (grunt) {
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
+      },
+      express: {
+        files: [
+          'app.js',
+          'api/{,*//*}*.{js,json}'
+        ],
+        tasks: ['express:dev'],
+        options: {
+          livereload: true,
+          nospawn: true //Without this option specified express won't be reloaded
+        }
       }
     },
 
@@ -384,13 +395,27 @@ module.exports = function (grunt) {
         configFile: 'karma.conf.js',
         singleRun: true
       }
+    },
+
+    express: {
+      options: {
+        port: grunt.option('port') || 9000,
+        script: 'app.js'
+      },
+      dev: {},
+      prod: {
+        options: {
+          node_env: 'production',
+          background: false
+        }
+      }
     }
   });
 
 
   grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
-      return grunt.task.run(['build', 'connect:dist:keepalive']);
+      return grunt.task.run(['build', 'express:prod']);
     }
 
     grunt.task.run([
@@ -398,7 +423,8 @@ module.exports = function (grunt) {
       'bowerInstall',
       'concurrent:server',
       'autoprefixer',
-      'connect:livereload',
+      //'connect:livereload',
+      'express:dev',
       'watch'
     ]);
   });
