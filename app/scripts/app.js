@@ -1,11 +1,12 @@
 'use strict';
 
-angular.module('yoAngular2App', [
-  'ngCookies',
-  'ngResource',
-  'ngSanitize',
-  'ngRoute'
-])
+angular
+  .module('yoAngularApp', [
+    'ngCookies',
+    'ngResource',
+    'ngSanitize',
+    'ngRoute'
+  ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
