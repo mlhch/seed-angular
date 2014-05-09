@@ -229,7 +229,12 @@ module.exports = function (grunt) {
     // The following *-min tasks produce minified files in the dist folder
     cssmin: {
       options: {
-        root: '<%= yeoman.app %>'
+        /**
+         * 2014-05-09 18:42
+         * Comment it to avoid below error for `grunt serve:dist`
+         * http://127.0.0.1:9000/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.svg 404 (Not Found) 
+         */
+        //root: '<%= yeoman.app %>'
       }
     },
 
@@ -314,6 +319,14 @@ module.exports = function (grunt) {
           cwd: '.tmp/images',
           dest: '<%= yeoman.dist %>/images',
           src: ['generated/*']
+        }, {
+          expand: true,
+          cwd: '<%= yeoman.app %>/bower_components',
+          dest: '<%= yeoman.dist %>/fonts',
+          flatten: true,
+          src: [
+            'bootstrap/dist/fonts/*'
+          ]
         }]
       },
       styles: {
