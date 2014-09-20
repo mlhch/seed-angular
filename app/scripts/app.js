@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name aaaApp
+ * @name yoAngularApp
  * @description
- * # aaaApp
+ * # yoAngularApp
  *
  * Main module of the application.
  */
 angular
-  .module('aaaApp', [
+  .module('yoAngularApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
