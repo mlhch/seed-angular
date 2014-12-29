@@ -11,7 +11,9 @@
 angular
   .module('yoAngularApp', [
     'ngAnimate',
+    'ngAria',
     'ngCookies',
+    'ngMessages',
     'ngResource',
     'ngRoute',
     'ngSanitize',
