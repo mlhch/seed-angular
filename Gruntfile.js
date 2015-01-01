@@ -400,7 +400,7 @@ module.exports = function (grunt) {
     express: {
       options: {
         port: grunt.option('port') || 9000,
-        script: 'app.js'
+        script: 'bin/www'
       },
       dev: {},
       prod: {

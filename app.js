@@ -50,6 +50,8 @@ app.use(cookieParser());
 // development only
 if ('development' == app.get('env')) {
   //- app.use(express.errorHandler());
+  //*
+  app.use('/bower_components', express.static(path.join(__dirname, 'bower_components')));
   app.use(express.static(path.join(__dirname, '.tmp')));
   app.use(express.static(path.join(__dirname, 'app')));
 } else {
